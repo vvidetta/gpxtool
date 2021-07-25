@@ -12,7 +12,7 @@
     <Name>gpxtool</Name>
     <RootNamespace>gpxtool</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>..\Cardiff2Barry.gpx</CommandLineArguments>
+    <CommandLineArguments>distance ..\Cardiff2Barry.gpx</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <InterpreterId>Global|VisualStudio|Python 3.7 (64-bit)</InterpreterId>
   </PropertyGroup>
@@ -26,6 +26,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="gpxtool.py" />
+    <Compile Include="gpxtool_subcommands.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|VisualStudio|Python 3.7 (64-bit)" />
