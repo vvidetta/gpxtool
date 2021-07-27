@@ -5,23 +5,24 @@ import numpy.linalg as LA
 
 _radius_ = 6378137.0 # semi-major axis of WGS84 ellipsoid in m
 
-class sph_point:
-	def __init__(self, r: float, lat: float, lon: float):
+class earth_coord:
+	def __init__(self, ele: float, lat: float, lon: float):
 		"""
-		r is in metres.
+		ele is in metres.
 		lat and lon are in degrees.
 		"""
-		self.r = r
+		self.ele = ele
 		self.lat = lat
 		self.lon = lon
 
 class cart_point:
-	def __init__(self, sph: sph_point):
+	def __init__(self, sph: earth_coord):
 		lat = math.radians(sph.lat)
 		lon = math.radians(sph.lon)
-		self.x = sph.r * math.cos(lon) * math.cos(lat)
-		self.y = sph.r * math.sin(lon) * math.cos(lat)
-		self.z = sph.r * math.sin(lat)
+		r = _radius_ + sph.ele
+		self.x = r * math.cos(lon) * math.cos(lat)
+		self.y = r * math.sin(lon) * math.cos(lat)
+		self.z = r * math.sin(lat)
 
 	def __sub__(p, q) -> np.array:
 		return np.array([p.x - q.x, p.y - q.y, p.z - q.z])
@@ -38,7 +39,7 @@ def _get_trackpoints(gpx_file: str) -> list:
 		print("ERROR: No trackpoints found")
 		raise Exception()
 
-	return list(map(lambda x: sph_point(float(x.find('gpx:ele', ns).text) + _radius_, float(x.attrib["lat"]), float(x.attrib["lon"])), trkpts))
+	return list(map(lambda x: earth_coord(float(x.find('gpx:ele', ns).text), float(x.attrib["lat"]), float(x.attrib["lon"])), trkpts))
 
 def distance(gpx_file: str):
 	p = _get_trackpoints(gpx_file)
@@ -54,9 +55,8 @@ def top(gpx_file: str):
 
 	top = p[0]
 	for i in range(1, len(p)):
-		if p[i].r > top.r:
+		if p[i].ele > top.ele:
 			top = p[i]
 
-	elevation = top.r - _radius_
-	print(f"Top of the ride @ ({top.lat}, {top.lon}), Elevation {elevation}m")
+	print(f"Top of the ride @ ({top.lat}, {top.lon}), Elevation {top.ele}m")
 
