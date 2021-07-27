@@ -50,3 +50,15 @@ def distance(gpx_file: str) -> int:
 	print(f"Distance = {distance}m")
 	return 0
 
+def top(gpx_file: str) -> int:
+	p = _get_trackpoints(gpx_file)
+
+	top = p[0]
+	for i in range(1, len(p)):
+		if p[i].r > top.r:
+			top = p[i]
+
+	elevation = top.r - _radius_
+	print(f"Top of the ride @ ({top.lat}, {top.lon}), Elevation {elevation}m")
+	return 0
+

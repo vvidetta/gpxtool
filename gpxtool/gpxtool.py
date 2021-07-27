@@ -11,5 +11,9 @@ gpx_file = sys.argv[2]
 exit_code = 1
 if subcommand == "distance":
 	exit_code = SC.distance(gpx_file)
+elif subcommand == "top":
+	exit_code = SC.top(gpx_file)
+else:
+	print("Unrecognised subcommand \"{subcommand}\"")
 
 sys.exit(exit_code)
