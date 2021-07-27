@@ -40,7 +40,7 @@ def _get_trackpoints(gpx_file: str) -> list:
 
 	return list(map(lambda x: sph_point(float(x.find('gpx:ele', ns).text) + _radius_, float(x.attrib["lat"]), float(x.attrib["lon"])), trkpts))
 
-def distance(gpx_file: str) -> int:
+def distance(gpx_file: str):
 	p = _get_trackpoints(gpx_file)
 
 	distance = 0
@@ -48,9 +48,8 @@ def distance(gpx_file: str) -> int:
 		distance += LA.norm(cart_point(p[i+1]) - cart_point(p[i]))
 
 	print(f"Distance = {distance}m")
-	return 0
 
-def top(gpx_file: str) -> int:
+def top(gpx_file: str):
 	p = _get_trackpoints(gpx_file)
 
 	top = p[0]
@@ -60,5 +59,4 @@ def top(gpx_file: str) -> int:
 
 	elevation = top.r - _radius_
 	print(f"Top of the ride @ ({top.lat}, {top.lon}), Elevation {elevation}m")
-	return 0
 
