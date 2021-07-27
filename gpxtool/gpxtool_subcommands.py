@@ -60,3 +60,13 @@ def top(gpx_file: str):
 
 	print(f"Top of the ride @ ({top.lat}, {top.lon}), Elevation {top.ele}m")
 
+def north(gpx_file: str):
+	p = _get_trackpoints(gpx_file)
+
+	north = p[0]
+	for i in range(1, len(p)):
+		if p[i].lat > north.lat:
+			north = p[i]
+
+	print(f"Northernmost point @ ({north.lat}, {north.lon})")
+

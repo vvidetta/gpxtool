@@ -12,6 +12,8 @@ try:
 		SC.distance(gpx_file)
 	elif subcommand == "top":
 		SC.top(gpx_file)
+	elif subcommand == "north":
+		SC.north(gpx_file)
 	else:
 		raise Exception("Unrecognised subcommand \"{subcommand}\"")
 
