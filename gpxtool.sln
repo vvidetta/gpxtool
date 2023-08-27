@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "gpxtool", "gpxtool\gpxtool.pyproj", "{DB0AD360-0A5B-4A4A-93D9-8278A80B2EF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB0AD360-0A5B-4A4A-93D9-8278A80B2EF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB0AD360-0A5B-4A4A-93D9-8278A80B2EF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {905D56B2-A1A8-4415-93AE-AAD0C9BE8F23}
+	EndGlobalSection
+EndGlobal
